@@ -1,0 +1,178 @@
+// Create an athlete
+POST http://localhost:3000/athletes HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Athlete1",
+  "email": "athlete1@test.com",
+  "phone": "05555555555",
+  "languages": ["Turkish", "English"],
+  "password": "password123",
+  "location": "Ankara",
+  "disabilityType": "Visual impairment",
+  "disabilityLevel": "medium",
+  "usesGuideDog": false,
+  "emergencyContact": {
+    "name": "Mom",
+    "phone": "05559876543"
+  }
+}
+
+// Athlete login
+###
+POST http://localhost:3000/athletes/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "athlete1@test.com",
+  "password": "password123"
+}
+
+// Get all athletes
+###
+GET http://localhost:3000/athletes HTTP/1.1
+
+// Get athlete by ID
+###
+GET http://localhost:3000/athletes/69f23de695598746d27b5857 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZGU2OTU1OTg3NDZkMjdiNTg1NyIsInR5cGUiOiJhdGhsZXRlIiwiaWF0IjoxNzc3NDgzMjQ5LCJleHAiOjE3NzgwODgwNDl9.CC1y17VGVNumw3omvuuIa0AL9Q8A2ovrecpRHTZpjxM
+
+// Update athlete
+###
+PATCH http://localhost:3000/athletes/69f23de695598746d27b5857 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZGU2OTU1OTg3NDZkMjdiNTg1NyIsInR5cGUiOiJhdGhsZXRlIiwiaWF0IjoxNzc3NDgzMjQ5LCJleHAiOjE3NzgwODgwNDl9.CC1y17VGVNumw3omvuuIa0AL9Q8A2ovrecpRHTZpjxM
+content-type: application/json
+
+{
+  "location": "Istanbul"
+}
+
+// Delete athlete
+###
+DELETE http://localhost:3000/athletes/69f23de695598746d27b5857 HTTP/1.1
+Authorization: Bearer 
+
+// Create a Guide
+###
+POST http://localhost:3000/guides HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Guide1",
+  "email": "guide1@test.com",
+  "phone": "05557654321",
+  "languages": ["Turkish"],
+  "password": "password456",
+  "location": "Ankara",
+  "guidingExperience": "I have been working as a tour guide for 2 years.",
+  "emergencyContact": {
+    "name": "Es",
+    "phone": "05551112233"
+  }
+}
+
+// Guide login
+###
+POST http://localhost:3000/guides/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "guide1@test.com",
+  "password": "password456"
+}
+
+// Get all guides
+###
+GET http://localhost:3000/guides HTTP/1.1
+
+// Get guide by ID
+###
+GET http://localhost:3000/guides/69f23e5495598746d27b5858 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZTU0OTU1OTg3NDZkMjdiNTg1OCIsInR5cGUiOiJndWlkZSIsImlhdCI6MTc3NzQ4MzM2MSwiZXhwIjoxNzc4MDg4MTYxfQ.dvl44bfwrjDXk1w-xQToFO3V-Sb8FZ1XV-0Nv2nGToA
+
+// Update guide
+###
+PATCH http://localhost:3000/guides/69f23e5495598746d27b5858 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZTU0OTU1OTg3NDZkMjdiNTg1OCIsInR5cGUiOiJndWlkZSIsImlhdCI6MTc3NzQ4MzM2MSwiZXhwIjoxNzc4MDg4MTYxfQ.dvl44bfwrjDXk1w-xQToFO3V-Sb8FZ1XV-0Nv2nGToA
+content-type: application/json
+
+{
+  "location": "Istanbul"
+}
+
+// Delete guide
+###
+DELETE http://localhost:3000/guides/69f23e5495598746d27b5858 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZTU0OTU1OTg3NDZkMjdiNTg1OCIsInR5cGUiOiJndWlkZSIsImlhdCI6MTc3NzQ4MzM2MSwiZXhwIjoxNzc4MDg4MTYxfQ.dvl44bfwrjDXk1w-xQToFO3V-Sb8FZ1XV-0Nv2nGToA
+
+// Create a session
+###
+POST http://localhost:3000/sessions HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZTU0OTU1OTg3NDZkMjdiNTg1OCIsInR5cGUiOiJndWlkZSIsImlhdCI6MTc3NzQ4NjMzNCwiZXhwIjoxNzc4MDkxMTM0fQ.-QPNceSBBYcPOH350-FkGYA-OCv99SjqAHDDttkPslg
+content-type: application/json
+
+{
+  "date": "2026-05-10",
+  "hour": "09:00",
+  "location": "Kuğulu Park, Ankara",
+  "distance": 5,
+  "description": "Morning run, we'll go at a brisk pace."
+}
+
+// Apply to a session
+###
+PATCH http://localhost:3000/sessions/69f24a21fd6ae448de2c5ab8/apply HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZTU0OTU1OTg3NDZkMjdiNTg1OCIsInR5cGUiOiJndWlkZSIsImlhdCI6MTc3NzQ4NjYwMCwiZXhwIjoxNzc4MDkxNDAwfQ.H1uZQ78iHUj2UDBARl42HQI9HYymHFusqoniT22R8bY
+
+// Approve an application
+###
+PATCH http://localhost:3000/sessions/69f246c1e4343a0733b23f1a/status HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZGU2OTU1OTg3NDZkMjdiNTg1NyIsInR5cGUiOiJhdGhsZXRlIiwiaWF0IjoxNzc3NDg2MjYxLCJleHAiOjE3NzgwOTEwNjF9.PFzhsDVMvFyPXcmjf-nNlvTvg0NT3EXHnah4-Lx82ho
+content-type: application/json
+
+{
+  "status": "confirmed"
+}
+
+// Get sessions by status
+###
+GET http://localhost:3000/sessions/search?status=open HTTP/1.1
+
+// Get confirmed sessions
+###
+GET http://localhost:3000/sessions/search?status=confirmed HTTP/1.1
+
+// Get session by ID
+###
+GET http://localhost:3000/sessions/69f23f4695598746d27b585a HTTP/1.1
+
+// Update session status
+###
+PATCH http://localhost:3000/sessions/69f23f4695598746d27b585a/status HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIzZTU0OTU1OTg3NDZkMjdiNTg1OCIsInR5cGUiOiJndWlkZSIsImlhdCI6MTc3NzQ4NjA2MiwiZXhwIjoxNzc4MDkwODYyfQ.C3H_tR8kvrBmZO4MiFaADUF2a3NUehaQJf9be2lPipg
+content-type: application/json
+
+{
+  "status": "confirmed"
+}
+
+// Add review to session
+###
+PATCH http://localhost:3000/sessions/69f23e5495598746d27b5858/review HTTP/1.1
+Authorization: Bearer 
+content-type: application/json
+
+{
+  "rating": 5,
+  "note": "He was a very good guide, I would definitely recommend him."
+}
+
+// Delete session
+###
+DELETE http://localhost:3000/sessions/69f23e5495598746d27b5858 HTTP/1.1
+Authorization: Bearer
+
+// Use the obtained token to access protected route
+###
+GET http://localhost:3000/athletes/69f22749244fd26129b273ab HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjIyNzQ5MjQ0ZmQyNjEyOWIyNzNhYiIsInR5cGUiOiJhdGhsZXRlIiwiaWF0IjoxNzc3NDc3NDg3LCJleHAiOjE3NzgwODIyODd9.8sl5ftwjTfk9b_m3KzE2OKB8pgmAZbHyES35-DJjZKc
