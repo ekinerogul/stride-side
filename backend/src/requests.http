@@ -64,7 +64,6 @@ content-type: application/json
   "languages": ["Turkish"],
   "password": "password456",
   "location": "Ankara",
-  "guidingExperience": "I have been working as a tour guide for 2 years.",
   "emergencyContact": {
     "name": "Es",
     "phone": "05551112233"

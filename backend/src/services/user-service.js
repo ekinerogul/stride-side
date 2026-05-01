@@ -5,7 +5,13 @@ const jwt = require("jsonwebtoken");
 class UserService extends BaseService {
   async insert(userData) {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    return await this.model.create({ ...userData, password: hashedPassword });
+    const user = await this.model.create({
+      ...userData,
+      password: hashedPassword,
+    });
+    const userObj = user.toObject();
+    delete userObj.password;
+    return userObj;
   }
 
   async findByName(name) {

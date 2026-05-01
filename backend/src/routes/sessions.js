@@ -34,7 +34,7 @@ router.post("/", auth, async (req, res, next) => {
   }
 });
 
-router.get("/search", async (req, res, next) => {
+router.get("/search", auth, async (req, res, next) => {
   try {
     const { location, date, status } = req.query;
     const query = {};
@@ -47,7 +47,7 @@ router.get("/search", async (req, res, next) => {
   }
 });
 
-router.get("/:sessionId", async (req, res, next) => {
+router.get("/:sessionId", auth, async (req, res, next) => {
   try {
     const session = await sessionService.find(req.params.sessionId);
     if (!session)

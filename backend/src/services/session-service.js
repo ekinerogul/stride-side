@@ -20,9 +20,9 @@ class SessionService extends BaseService {
 
     const update = { "status.current": "confirmed" };
 
-    if (session.status.applicantType === "athlete") {
+    if (session.status.applicantType === "Athlete") {
       update.athlete = session.status.applicant;
-    } else if (session.status.applicantType === "guide") {
+    } else if (session.status.applicantType === "Guide") {
       update.guide = session.status.applicant;
     }
 
@@ -36,17 +36,23 @@ class SessionService extends BaseService {
     if (session.status.current !== "open")
       throw new Error("Session is not open.");
 
-    if (session.athlete?._id?.toString() === applicantId) {
+    const ownerId =
+      session.createdBy?._id?.toString() || session.createdBy?.toString();
+    if (ownerId === applicantId) {
       throw new Error("You cannot apply to your own session.");
     }
-    if (session.guide?._id?.toString() === applicantId) {
-      throw new Error("You cannot apply to your own session.");
+
+    if (applicantType === "athlete" && session.athlete) {
+      throw new Error("Athletes cannot apply to an athlete session.");
+    }
+    if (applicantType === "guide" && session.guide) {
+      throw new Error("Guides cannot apply to a guide session.");
     }
 
     return this.update(sessionId, {
       "status.current": "applied",
       "status.applicant": applicantId,
-      "status.applicantType": applicantType === "athlete" ? "athlete" : "guide",
+      "status.applicantType": applicantType === "athlete" ? "Athlete" : "Guide",
     });
   }
 

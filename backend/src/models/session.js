@@ -9,7 +9,7 @@ const sessionSchema = new mongoose.Schema(
     },
     createdByType: {
       type: String,
-      enum: ["athlete", "guide"],
+      enum: ["Athlete", "Guide"],
       required: true,
     },
     guide: {
