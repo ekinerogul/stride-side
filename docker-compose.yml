@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  frontend:
+    build: frontend
+    ports:
+      - 5173:5173
+  backend:
+    build: backend
+    environment:
+      MONGODB_URI: "mongodb://mongodb/stride-side"
+      JWT_SECRET: "94bb97a7f58e0fdc824df4fad113477329eb74c873bb21f89d6d5c43655a4d710fda6340320b571e1c8f55539fb442005d2dc359d79bc4a1ee31378455d56b52"
+      CLIENT_URL: "http://localhost:5173"
+      PORT: 3000
+    ports:
+      - 3000:3000
+  mongodb:
+    image: mongo:6
+    ports:
+      - 37017:27017
+    volumes:
+      - ./data:/data/db

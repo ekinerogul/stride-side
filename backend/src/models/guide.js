@@ -9,8 +9,8 @@ const guideSchema = new mongoose.Schema(
     password: { type: String, required: true, select: false },
     location: { type: String, required: true },
     emergencyContact: {
-      name: { type: String, required: true },
-      phone: { type: String, required: true },
+      name: { type: String },
+      phone: { type: String },
     },
     rating: { type: Number, default: 0 },
     runningExperience: { type: String },
